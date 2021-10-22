@@ -1,0 +1,24 @@
+.table {
+  border: 2px solid;
+  border-collapse: collapse;
+
+  tr {
+    &:first-of-type {
+      border: 2px solid;
+    }
+    td {
+      min-width: 2rem;
+      padding: 0.2rem;
+      text-align: center;
+      border: 1px solid;
+
+      &:first-of-type {
+        border-right: 2px solid;
+      }
+    }
+  }
+}
+
+.P {
+  background: #e53935;
+}

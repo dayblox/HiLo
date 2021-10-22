@@ -1,7 +1,8 @@
 import { range } from "lodash"
 import { useEffect, useReducer, useState } from "react"
 import { Cards } from "../../utils/cards"
-import hitStandDoubleSurrender from "../../utils/hitStandDoubleSurrender"
+import split from "../../utils/split"
+import styles from "./Table.module.scss"
 
 type cardAction = {
   type: "discard" | "reset"
@@ -39,8 +40,9 @@ const cardsReducer = (
   }
 }
 
-const player = range(12, 22)
+const player = range(2, 12)
 const dealer = range(2, 12)
+
 const Table = () => {
   const [decks, setDecks] = useState(8)
   const [peekOnAce, setPeekOnAce] = useState(true)
@@ -64,23 +66,25 @@ const Table = () => {
 
   return (
     <>
-      <table>
+      <table className={styles.table}>
         <tbody>
+          <tr>
+            <td></td>
+            {dealer.map((j) => (
+              <td key={j}>{j}</td>
+            ))}
+          </tr>
+
           {player.map((i) => (
             <tr key={i}>
+              <td>{i}</td>
               {dealer.map((j) => (
-                <td key={j} style={{ padding: "5px" }}>
-                  {
-                    hitStandDoubleSurrender(
-                      cards,
-                      i,
-                      j,
-                      true,
-                      peekOnAce,
-                      peekOnTen
-                    ).action
+                <td
+                  key={j}
+                  className={
+                    styles[split(cards, i, j, peekOnAce, peekOnTen).action]
                   }
-                </td>
+                ></td>
               ))}
             </tr>
           ))}

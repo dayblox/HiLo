@@ -10,6 +10,7 @@ export enum Action {
   Hit = "H",
   Double = "D",
   Surrender = "R",
+  Split = "P",
 }
 
 const hitStandDoubleSurrender = memoize(
