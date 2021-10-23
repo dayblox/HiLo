@@ -1,24 +1,39 @@
 .table {
-  border: 2px solid;
   border-collapse: collapse;
+  margin-bottom: 1rem;
+  border: 3px solid;
 
   tr {
-    &:first-of-type {
-      border: 2px solid;
+    &.header {
+      border: 3px solid;
+    }
+    &.spacer {
+      height: 20px;
+      border-width: 0;
     }
     td {
       min-width: 2rem;
       padding: 0.2rem;
       text-align: center;
       border: 1px solid;
-
+      &.H {
+        background: rgb(72, 190, 68);
+      }
+      &.S {
+        background: rgb(190, 68, 68);
+      }
+      &.D {
+        background: rgb(68, 96, 190);
+      }
+      &.R {
+        background: rgb(184, 186, 192);
+      }
+      &.P {
+        background: rgb(207, 168, 39);
+      }
       &:first-of-type {
-        border-right: 2px solid;
+        border-right: 3px solid;
       }
     }
   }
-}
-
-.P {
-  background: #e53935;
 }

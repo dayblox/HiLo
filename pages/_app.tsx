@@ -5,11 +5,15 @@ import Head from "next/head"
 import React from "react"
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material"
 import Bar from "../src/components/Bar"
+import { amber } from "@mui/material/colors"
 
 function MyApp({ Component, pageProps }: AppProps) {
   const darkTheme = createTheme({
     palette: {
       mode: "dark",
+      primary: {
+        main: amber[900],
+      },
     },
   })
   return (

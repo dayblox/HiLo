@@ -1,6 +1,7 @@
 import { range } from "lodash"
 import { useEffect, useReducer, useState } from "react"
 import { Cards } from "../../utils/cards"
+import hitStandDoubleSurrender from "../../utils/hitStandDoubleSurrender"
 import split from "../../utils/split"
 import styles from "./Table.module.scss"
 
@@ -40,7 +41,9 @@ const cardsReducer = (
   }
 }
 
-const player = range(2, 12)
+const player = range(8, 18)
+const soft = range(2, 9)
+const pair = range(2, 12)
 const dealer = range(2, 12)
 
 const Table = () => {
@@ -68,14 +71,65 @@ const Table = () => {
     <>
       <table className={styles.table}>
         <tbody>
-          <tr>
+          <tr className={styles.header}>
             <td></td>
             {dealer.map((j) => (
               <td key={j}>{j}</td>
             ))}
           </tr>
-
           {player.map((i) => (
+            <tr key={i}>
+              <td>{i}</td>
+              {dealer.map((j) => (
+                <td
+                  key={j}
+                  className={
+                    styles[
+                      hitStandDoubleSurrender(
+                        cards,
+                        i,
+                        j,
+                        false,
+                        peekOnAce,
+                        peekOnTen
+                      ).action
+                    ]
+                  }
+                ></td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <table className={styles.table}>
+        <tbody>
+          {soft.map((i) => (
+            <tr key={i}>
+              <td>{i}</td>
+              {dealer.map((j) => (
+                <td
+                  key={j}
+                  className={
+                    styles[
+                      hitStandDoubleSurrender(
+                        cards,
+                        11 + i,
+                        j,
+                        true,
+                        peekOnAce,
+                        peekOnTen
+                      ).action
+                    ]
+                  }
+                ></td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <table className={styles.table}>
+        <tbody>
+          {pair.map((i) => (
             <tr key={i}>
               <td>{i}</td>
               {dealer.map((j) => (
