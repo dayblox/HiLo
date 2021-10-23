@@ -74,7 +74,7 @@ const Table = () => {
           <tr className={styles.header}>
             <td></td>
             {dealer.map((j) => (
-              <td key={j}>{j}</td>
+              <td key={j}>{j === 11 ? "A" : j}</td>
             ))}
           </tr>
           {player.map((i) => (
@@ -131,7 +131,7 @@ const Table = () => {
         <tbody>
           {pair.map((i) => (
             <tr key={i}>
-              <td>{i}</td>
+              <td>{i === 11 ? "A" : i}</td>
               {dealer.map((j) => (
                 <td
                   key={j}

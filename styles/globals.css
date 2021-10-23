@@ -9,3 +9,7 @@ body {
 #app {
   margin: 1rem;
 }
+
+:root {
+  color-scheme: dark;
+}
