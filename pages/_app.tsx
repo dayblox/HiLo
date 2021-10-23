@@ -14,6 +14,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       primary: {
         main: amber[900],
       },
+      background: {
+        default: "#36393f",
+      },
     },
   })
   return (

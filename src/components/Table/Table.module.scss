@@ -1,7 +1,10 @@
 .table {
   border-collapse: collapse;
-  margin-bottom: 1rem;
   border: 3px solid;
+
+  &:not(:last-of-type) {
+    margin-bottom: 1rem;
+  }
 
   tr {
     &.header {
